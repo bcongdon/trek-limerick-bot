@@ -10,6 +10,7 @@ const program = require('commander');
 const rhyme = require('rhyme');
 const Tokenizer = require('sentence-tokenizer');
 const Twit = require('twit');
+const customWords = require('./custom_phrases.json');
 require('dotenv').config();
 var _ = require('lodash');
 _.mixin(botUtilities.lodashMixins);
@@ -31,22 +32,51 @@ function scriptToSentences(script) {
 }
 
 function cleanWord(str) {
-  return str.replace(/[^a-zA-Z ]+/g, '').replace('/ {2,}/',' ');
+  return str.toLowerCase()
+            .replace(/^[^a-zA-Z ]+/g, '')
+            .replace(/[^a-zA-Z ]+$/g, '')
+            .replace('/ {2,}/',' ');
 }
 
+function cleanSentence(str) {
+  return str.replace(/\.\.\.|-/g, ' ');
+}
+
+function rhymeKeyForWord(r, str) {
+  str = cleanWord(str);
+  if(str in customWords)
+    return customWords[str].rhyme;
+  return r.rhyme(str)[0];
+}
+
+function syllablesForWord(r, str) {
+  str = cleanWord(str);
+  if(str in customWords)
+    return customWords[str].syllables
+  return r.syllables(str);
+}
+
+var unknown = {}
+
 function sentenceSyllables(r, str) {
-  return str.split(' ').reduce(function(acc, val) {
+  str = cleanSentence(str);
+  return str.split(/\s/).reduce(function(acc, val) {
+    if(val == "")
+      return acc;
     val = cleanWord(val);
-    return acc + r.syllables(val);
+    if(isNaN(syllablesForWord(r, val))) {
+      unknown[val] = val in unknown ? unknown[val] + 1 : 1;
+    }
+    return acc + syllablesForWord(r, val);
   }, 0)
 }
 
 function lastWord(sent) {
-  return cleanWord(_.last(sent.split(' ')).toLowerCase());
+  return cleanWord(_.last(sent.split(/\s/)));
 }
 
 function rhymeKey(r, sent) {
-  return r.rhyme(lastWord(sent))[0];
+  return rhymeKeyForWord(r, lastWord(sent));
 }
 
 function generateLimerickData(data, cb) {
@@ -55,7 +85,7 @@ function generateLimerickData(data, cb) {
   rhyme(function(r) {
     sentence_script.forEach(function(d) {
       d.syllables = sentenceSyllables(r, d.line);
-    })
+    });
     var selected = sentence_script.filter(function(d) {return d.syllables == 6 || d.syllables == 9});
     selected = selected.map(function(d){
       d.key = rhymeKey(r, d.line);
@@ -97,6 +127,9 @@ function processScriptFile(fpath, cb) {
         fs.writeFile(new_fpath, JSON.stringify(processed), function(err) {
           if(err) console.log(err);
           else console.log("Saved: " + new_fpath);
+          console.log(_.chain(unknown).map(function(d, k) {
+            return {word: k, count: d}
+          }).sortBy('count').reverse().value());
           cb();
         });
       });
@@ -229,6 +262,24 @@ program
   .description('Post a limerick as a tweet stream')
   .action(function() {
     postLimerick();
+  });
+
+program
+  .command('rhyme')
+  .description('Gives the rhyme keyword of a word')
+  .action(function(word) {
+    rhyme(function(r) {
+      console.log("Rhyme Keyword: " + rhymeKeyForWord(r, word));
+    });
+  });
+
+program
+  .command('syllables')
+  .description('Gives the syllables of a word')
+  .action(function(word) {
+    rhyme(function(r) {
+      console.log("Syllables: " + syllablesForWord(r, word));
+    });
   });
 
 program.parse(process.argv);

@@ -1,0 +1,106 @@
+{
+    "lutan": {
+        "syllables": 2,
+        "rhyme": "CULTON"
+    },
+    "yar": {
+        "syllables": 1,
+        "rhyme": "AHR"
+    },
+    "starfleet": {
+        "syllables": 2,
+        "rhyme": ""
+    },
+    "farpoint": {
+        "syllables": 2,
+        "rhyme": ""
+    },
+    "troi": {
+        "syllables": 1,
+        "rhyme": "BOYE"
+    },
+    "phasers": {
+        "syllables": 2,
+        "rhyme": "BLAZERS"
+    },
+    "stardate": {
+        "syllables": 2,
+        "rhyme": ""
+    },
+    "ferengi": {
+        "syllables": 3,
+        "rhyme": ""
+    },
+    "worf": {
+        "syllables": 1,
+        "rhyme": "DORF"
+    },
+    "geordi": {
+        "syllables": 2,
+        "rhyme": ""
+    },
+    "sickbay": {
+        "syllables": 2,
+        "rhyme": ""
+    },
+    "yareena": {
+        "syllables": 3,
+        "rhyme": ""
+    },
+    "lifeform": {
+        "syllables": 2,
+        "rhyme": ""
+    },
+    "groppler": {
+        "syllables": 2,
+        "rhyme": ""
+    },
+    "forcefield": {
+        "syllables": 2,
+        "rhyme": ""
+    },
+    "starfleet's": {
+        "syllables": 2,
+        "rhyme": ""
+    },
+    "humanoid": {
+        "syllables": 3,
+        "rhyme": ""
+    },
+    "cardassian": {
+        "syllables": 4,
+        "rhyme": ""
+    },
+    "romulan": {
+        "syllables": 3,
+        "rhyme": ""
+    },
+    "romulans": {
+        "syllables": 3,
+        "rhyme": ""
+    },
+    "duras": {
+        "syllables": 2,
+        "rhyme": ""
+    },
+    "tachyon": {
+        "syllables": 3,
+        "rhyme": ""
+    },
+    "subspace": {
+        "syllables": 2,
+        "rhyme": ""
+    },
+    "starbase": {
+        "syllables": 2,
+        "rhyme": ""
+    },
+    "kingons": {
+        "syllables": 2,
+        "rhyme": ""
+    },
+    "klingon": {
+        "syllables": 2,
+        "rhyme": ""
+    }
+}
