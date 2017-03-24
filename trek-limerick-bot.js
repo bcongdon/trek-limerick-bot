@@ -203,27 +203,38 @@ program
     });
   });
 
+function postLimerick(cb) {
+  getData(function(data) {
+    var limerick = generateLimerick(data)
+    var tweets = splitIntoTweets(limerick);
+    var T = new Twit(botUtilities.getTwitterAuthFromEnv());
+    async.reduce(tweets, {}, function(prev, str, cb) {
+      var opts = {
+        in_reply_to_status_id: prev.id_str,
+        status: str
+      }
+      T.post('statuses/update', opts, function(err, data, resp) {
+        cb(err, data);
+      });
+    }, function(err) {
+      if(err) throw err;
+      else console.log("Posted tweets successfully.");
+      if(cb) cb();
+    });
+  });
+}
+
 program
   .command('post')
   .description('Post a limerick as a tweet stream')
   .action(function() {
-    getData(function(data) {
-      var limerick = generateLimerick(data)
-      var tweets = splitIntoTweets(limerick);
-      var T = new Twit(botUtilities.getTwitterAuthFromEnv());
-      async.reduce(tweets, {}, function(prev, str, cb) {
-        var opts = {
-          in_reply_to_status_id: prev.id_str,
-          status: str
-        }
-        T.post('statuses/update', opts, function(err, data, resp) {
-          cb(err, data);
-        });
-      }, function(err) {
-        if(err) throw err;
-        else console.log("Posted tweets successfully.")
-      });
-    });
+    postLimerick();
   });
 
 program.parse(process.argv);
+
+exports.handler = function(event, context) {
+  postLimerick(function() {
+    context.succeed();
+  });
+}
