@@ -125,7 +125,7 @@
     },
     "lieutenant": {
         "syllables": 3,
-        "rhyme": "AUNT"
+        "rhyme": "ANT"
     },
     "tricorder": {
         "syllables": 3,
@@ -242,5 +242,73 @@
     "jean-luc": {
         "syllables": 2,
         "rhyme": "BOOCK"
+    },
+    "something": {
+        "syllables": 2,
+        "rhyme": "BING"
+    },
+    "betazoid": {
+        "syllables": 3,
+        "rhyme": "BLOYD"
+    },
+    "officer": {
+        "syllables": 3,
+        "rhyme": "FRANCOEUR"
+    },
+    "away": {
+        "syllables": 2,
+        "rhyme": "DEKAY"
+    },
+    "nothing": {
+        "syllables": 2,
+        "rhyme": "BING"
+    },
+    "anything": {
+        "syllables": 3,
+        "rhyme": "BING"
+    },
+    "engineering": {
+        "syllables": 4,
+        "rhyme": "CHEERING"
+    },
+    "e.t.a": {
+        "syllables": 3,
+        "rhyme": "A"
+    },
+    "admiral": {
+        "syllables": 3,
+        "rhyme": "ALL"
+    },
+    "impossible": {
+        "syllables": 4,
+        "rhyme": "ROSABELLE"
+    },
+    "problem": {
+        "syllables": 2,
+        "rhyme": "BLOSSOM"
+    },
+    "together": {
+        "syllables": 3,
+        "rhyme": "FEATHER"
+    },
+    "before": {
+        "syllables": 2,
+        "rhyme": "BAUR"
+    },
+    "ago": {
+        "syllables": 2,
+        "rhyme": "AU"
+    },
+    "alert": {
+        "syllables": 2,
+        "rhyme": "BERT"
+    },
+    "alive": {
+        "syllables": 2,
+        "rhyme": "LIV"
+    },
+    "about": {
+        "syllables": 2,
+        "rhyme": "BOUT"
     }
 }

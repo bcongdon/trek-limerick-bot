@@ -229,10 +229,15 @@ function getData(cb) {
   glob("processed/*.json", function(er, files) {
     var data = {};
     files.forEach(function(fpath){
-      var newData = JSON.parse(fs.readFileSync(fpath));
-      var oldsum = keyCount(data);
-      var newsum = keyCount(newData)
-      data = _.mergeWith(data, newData, merger);
+      try {
+        var newData = JSON.parse(fs.readFileSync(fpath));
+        var oldsum = keyCount(data);
+        var newsum = keyCount(newData)
+        data = _.mergeWith(data, newData, merger);
+      }
+      catch(e) {
+        console.log("Failed to load: " + fpath);
+      }
     });
     cb(data);
   });
