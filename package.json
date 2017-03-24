@@ -1,0 +1,23 @@
+{
+  "name": "tng-limerick-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tng-limerick-bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ben Congdon",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.1.5",
+    "commander": "^2.9.0",
+    "fs": "0.0.1-security",
+    "glob": "^7.1.1",
+    "lodash": "^4.17.4",
+    "mkdirp": "^0.5.1",
+    "multiprocessing": "^1.1.1",
+    "rhyme": "0.0.3",
+    "rhyme-plus": "0.0.7",
+    "sentence-tokenizer": "0.0.7"
+  }
+}
