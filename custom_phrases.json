@@ -9,11 +9,11 @@
     },
     "starfleet": {
         "syllables": 2,
-        "rhyme": ""
+        "rhyme": "BEAT"
     },
     "farpoint": {
         "syllables": 2,
-        "rhyme": ""
+        "rhyme": "JOINT"
     },
     "troi": {
         "syllables": 1,
@@ -25,7 +25,7 @@
     },
     "stardate": {
         "syllables": 2,
-        "rhyme": ""
+        "rhyme": "ATE"
     },
     "ferengi": {
         "syllables": 3,
@@ -37,19 +37,19 @@
     },
     "geordi": {
         "syllables": 2,
-        "rhyme": ""
+        "rhyme": "FORGEY"
     },
     "sickbay": {
         "syllables": 2,
-        "rhyme": ""
+        "rhyme": "A"
     },
     "yareena": {
         "syllables": 3,
-        "rhyme": ""
+        "rhyme": "BINA"
     },
     "lifeform": {
         "syllables": 2,
-        "rhyme": ""
+        "rhyme": "DORM"
     },
     "groppler": {
         "syllables": 2,
@@ -57,25 +57,17 @@
     },
     "forcefield": {
         "syllables": 2,
-        "rhyme": ""
-    },
-    "starfleet's": {
-        "syllables": 2,
-        "rhyme": ""
+        "rhyme": "FEILD"
     },
     "humanoid": {
         "syllables": 3,
-        "rhyme": ""
+        "rhyme": "BLOYD"
     },
     "cardassian": {
         "syllables": 4,
         "rhyme": ""
     },
     "romulan": {
-        "syllables": 3,
-        "rhyme": ""
-    },
-    "romulans": {
         "syllables": 3,
         "rhyme": ""
     },
@@ -89,18 +81,166 @@
     },
     "subspace": {
         "syllables": 2,
-        "rhyme": ""
+        "rhyme": "ACE"
     },
     "starbase": {
         "syllables": 2,
-        "rhyme": ""
-    },
-    "kingons": {
-        "syllables": 2,
-        "rhyme": ""
+        "rhyme": "ACE"
     },
     "klingon": {
         "syllables": 2,
+        "rhyme": "BINION"
+    },
+    "phaser": {
+        "syllables": 2,
+        "rhyme": "BLAISER"
+    },
+    "holodeck": {
+        "syllables": 3,
+        "rhyme": "BAEK"
+    },
+    "turbolift": {
+        "syllables": 3,
+        "rhyme": "CLIFT"
+    },
+    "shuttlecraft": {
+        "syllables": 3,
+        "rhyme": "AFT"
+    },
+    "commander": {
+        "syllables": 3,
+        "rhyme": "ANDER"
+    },
+    "iv": {
+        "syllables": 1,
+        "rhyme": "ARE"
+    },
+    "enterprise": {
+        "syllables": 3,
+        "rhyme": "AIS"
+    },
+    "wormhole": {
+        "syllables": 2,
+        "rhyme": "BOAL"
+    },
+    "lieutenant": {
+        "syllables": 3,
+        "rhyme": "AUNT"
+    },
+    "tricorder": {
+        "syllables": 3,
+        "rhyme": "BOARDER"
+    },
+    "shuttlebay": {
+        "syllables": 3,
+        "rhyme": "A"
+    },
+    "deflector": {
+        "syllables": 3,
+        "rhyme": "COLLECTOR"
+    },
+    "sentient": {
+        "syllables": 3,
         "rhyme": ""
+    },
+    "ral": {
+        "syllables": 1,
+        "rhyme": "ALL"
+    },
+    "karnas": {
+        "syllables": 2,
+        "rhyme": ""
+    },
+    "viewscreen": {
+        "syllables": 3,
+        "rhyme": "BEAN"
+    },
+    "starship": {
+        "syllables": 2,
+        "rhyme": "BIP"
+    },
+    "tsiolkovsky": {
+        "syllables": 3,
+        "rhyme": "B"
+    },
+    "again": {
+        "syllables": 2,
+        "rhyme": "BEHN"
+    },
+    "daimon": {
+        "syllables": 2,
+        "rhyme": "BRUHN"
+    },
+    "to": {
+        "syllables": 1,
+        "rhyme": "BEU"
+    },
+    "live": {
+        "syllables": 1,
+        "rhyme": "LIV"
+    },
+    "for": {
+        "syllables": 1,
+        "rhyme": "BAUR"
+    },
+    "her": {
+        "syllables": 1,
+        "rhyme": "BIR"
+    },
+    "the": {
+        "syllables": 1,
+        "rhyme": "BRUGH"
+    },
+    "nanite": {
+        "syllables": 2,
+        "rhyme": "BEIT"
+    },
+    "brull": {
+        "syllables": 1,
+        "rhyme": "FULL"
+    },
+    "warbird": {
+        "syllables": 2,
+        "rhyme": "BLURRED"
+    },
+    "understand": {
+        "syllables": 3,
+        "rhyme": "AND"
+    },
+    "gentlemen": {
+        "syllables": 3,
+        "rhyme": "BEHN"
+    },
+    "u.s.s": {
+        "syllables": 3,
+        "rhyme": "BESS"
+    },
+    "hostile": {
+        "syllables": 2,
+        "rhyme": "AISLE"
+    },
+    "tarellian": {
+        "syllables": 4,
+        "rhyme": "BREON"
+    },
+    "don't": {
+        "syllables": 1,
+        "rhyme": "DONT"
+    },
+    "won't": {
+        "syllables": 1,
+        "rhyme": "DONT"
+    },
+    "mordan": {
+        "syllables": 2,
+        "rhyme": "AHN"
+    },
+    "supplemental": {
+        "syllables": 4,
+        "rhyme": "DENTAL"
+    },
+    "jean-luc": {
+        "syllables": 2,
+        "rhyme": "BOOCK"
     }
 }

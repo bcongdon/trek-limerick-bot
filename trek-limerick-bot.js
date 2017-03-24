@@ -44,16 +44,24 @@ function cleanSentence(str) {
 
 function rhymeKeyForWord(r, str) {
   str = cleanWord(str);
+  var singular = str.replace(/\'?s$/, '');
   if(str in customWords)
     return customWords[str].rhyme;
-  return r.rhyme(str)[0];
+  else if(r.rhyme(str)[0])
+    return r.rhyme(str)[0];
+  else if(str != singular && rhymeKeyForWord(r, singular))
+    return rhymeKeyForWord(r, singular) + "S";
 }
 
 function syllablesForWord(r, str) {
   str = cleanWord(str);
+  var singular = str.replace(/\'?s$/, '');
   if(str in customWords)
-    return customWords[str].syllables
-  return r.syllables(str);
+    return customWords[str].syllables;
+  else if(r.syllables(str))
+    return r.syllables(str);
+  else if(str != singular && syllablesForWord(r, singular))
+    return syllablesForWord(r, singular);
 }
 
 var unknown = {}
@@ -61,9 +69,9 @@ var unknown = {}
 function sentenceSyllables(r, str) {
   str = cleanSentence(str);
   return str.split(/\s/).reduce(function(acc, val) {
+    val = cleanWord(val);
     if(val == "")
       return acc;
-    val = cleanWord(val);
     if(isNaN(syllablesForWord(r, val))) {
       unknown[val] = val in unknown ? unknown[val] + 1 : 1;
     }
@@ -89,6 +97,10 @@ function generateLimerickData(data, cb) {
     var selected = sentence_script.filter(function(d) {return d.syllables == 6 || d.syllables == 9});
     selected = selected.map(function(d){
       d.key = rhymeKey(r, d.line);
+      if(!d.key) {
+        var k = lastWord(d.line);
+        unknown[k] = k in unknown ? unknown[k] + 1 : 1;
+      }
       return d;
     }).filter(function(d){ return d.key; });
     cb(selected);
