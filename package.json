@@ -4,20 +4,23 @@
   "description": "",
   "main": "tng-limerick-bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "node_modules/node-lambda/bin/node-lambda package -H trek-limerick-bot.handler -f .env -A ./build -x scripts/"
   },
   "author": "Ben Congdon",
   "license": "MIT",
   "dependencies": {
     "async": "^2.1.5",
+    "bot-utilities": "^2.5.0",
     "commander": "^2.9.0",
+    "dotenv": "^4.0.0",
     "fs": "0.0.1-security",
     "glob": "^7.1.1",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
-    "multiprocessing": "^1.1.1",
+    "node-lambda": "^0.8.13",
     "rhyme": "0.0.3",
-    "rhyme-plus": "0.0.7",
-    "sentence-tokenizer": "0.0.7"
+    "sentence-tokenizer": "0.0.7",
+    "twit": "^2.2.5"
   }
 }
