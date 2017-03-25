@@ -12,7 +12,6 @@
   "dependencies": {
     "async": "^2.1.5",
     "bot-utilities": "^2.5.0",
-    "canvas": "^1.6.5",
     "commander": "^2.9.0",
     "dotenv": "^4.0.0",
     "fs": "0.0.1-security",
