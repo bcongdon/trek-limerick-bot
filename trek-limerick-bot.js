@@ -247,55 +247,75 @@ function getData(cb) {
 program
   .command('generate')
   .description('Generate a limerick')
-  .action(function() {
-    getData(function(data) {
-      while(true) {
-        var limerick = generateLimerick(data);
-        var l_str = limerick.map(function(d){return d.line}).join('\n');
-        if(l_str.length <= 140){
-          console.log(l_str);
-          console.log(l_str.length);
-          break;
-        }
-      }
-    });
-  });
-
-program
-  .command('image')
-  .description('Generate a limerick')
-  .action(function() {
+  .option('-o, --out <file>', 'Output limerick to image')
+  .action(function(opts) {
     getData(function(data) {
       var limerick = generateLimerick(data);
       var l_str = limerick.map(function(d){return d.line}).join('\n');
       console.log(l_str);
-      fs.writeFileSync('out.png', text2png(l_str, {
-        font: '80px Helvetica Neue',
-        textColor: 'black',
-        bgColor: 'white',
-        lineSpacing: 25,
-        padding: 20}));
+      if(opts.out)
+        fs.writeFileSync(opts.out, textToImage(l_str));
     });
   });
 
+function textToImage(str) {
+  return text2png(str, {
+    font: '80px Helvetica Neue',
+    textColor: 'black',
+    bgColor: 'white',
+    lineSpacing: 25,
+    padding: 20});
+}
+
 function postLimerick(cb) {
   getData(function(data) {
-    var limerick = generateLimerick(data)
-    var tweets = splitIntoTweets(limerick);
+    var limerick = generateLimerick(data);
+    var l_str = limerick.map(function(d){return d.line}).join('\n');
     var T = new Twit(botUtilities.getTwitterAuthFromEnv());
-    async.reduce(tweets, {}, function(prev, str, cb) {
-      var opts = {
-        in_reply_to_status_id: prev.id_str,
-        status: str
-      }
-      T.post('statuses/update', opts, function(err, data, resp) {
-        cb(err, data);
+    if(l_str.length < 140) {
+      T.post('statuses/update', { status: l_str }, function(err, data, resp) {
+        console.log("Posted successfully.");
+        if(cb) cb();
       });
-    }, function(err) {
-      if(err) throw err;
-      else console.log("Posted tweets successfully.");
-      if(cb) cb();
-    });
+    }
+    else {
+      var b64Data = textToImage(l_str).toString('base64');
+      T.post('media/upload', { media_data: b64Data }, function(err, data, res) {
+        if(err) throw err;
+        var mediaIdStr = data.media_id_string;
+        var altText = l_str;
+        var meta_params = {
+          media_id: mediaIdStr, 
+          alt_text: {
+            text: altText
+          }
+        };
+        T.post('media/metadata/create', meta_params, function (err, data, response) {
+          if(err) throw err;
+          var randomEmoji = _.shuffle(['🖖', '👽', '🤖', '🕵', '👾', '🚀'])[0];
+          var params = { status: randomEmoji + '👇', media_ids: [mediaIdStr] };
+          T.post('statuses/update', params, function (err, data, response) {
+            console.log("Posted successfully.");
+            if(cb) cb();
+          });
+        });
+      });
+    }
+    // Old code for posting tweets in sequence
+    // var tweets = splitIntoTweets(limerick);
+    // async.reduce(tweets, {}, function(prev, str, cb) {
+    //   var opts = {
+    //     in_reply_to_status_id: prev.id_str,
+    //     status: str
+    //   }
+    //   T.post('statuses/update', opts, function(err, data, resp) {
+    //     cb(err, data);
+    //   });
+    // }, function(err) {
+    //   if(err) throw err;
+    //   else console.log("Posted tweets successfully.");
+    //   if(cb) cb();
+    // });
   });
 }
 
