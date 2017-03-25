@@ -39,3 +39,4 @@ processed
 scripts
 .env
 build
+dist

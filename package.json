@@ -5,7 +5,7 @@
   "main": "tng-limerick-bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "node_modules/node-lambda/bin/node-lambda package -H trek-limerick-bot.handler -f .env -A ./build -x scripts/"
+    "package": "node_modules/gulp/bin/gulp.js"
   },
   "author": "Ben Congdon",
   "license": "MIT",
@@ -23,5 +23,11 @@
     "sentence-tokenizer": "0.0.7",
     "text2png": "^1.0.1",
     "twit": "^2.2.5"
+  },
+  "devDependencies": {
+    "aws-lambda-node-canvas": "^1.0.2",
+    "del": "^2.2.2",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-zip": "^4.0.0"
   }
 }
