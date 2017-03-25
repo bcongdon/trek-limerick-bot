@@ -310,5 +310,109 @@
     "about": {
         "syllables": 2,
         "rhyme": "BOUT"
+    },
+    "remember": {
+        "syllables": 3,
+        "rhyme": "MEMBER"
+    },
+    "interphasic": {
+        "syllables": 4,
+        "rhyme": "HESIK"
+    },
+    "graviton": {
+        "syllables": 3,
+        "rhyme": "CULTON"
+    },
+    "tetryon": {
+        "syllables": 3,
+        "rhyme": "BRIAN"
+    },
+    "baryon": {
+        "syllables": 3,
+        "rhyme": "BRIAN"
+    },
+    "homeworld": {
+        "syllables": 2,
+        "rhyme": "CURLED"
+    },
+    "solarion": {
+        "syllables": 4,
+        "rhyme": "BRIAN"
+    },
+    "percent": {
+        "syllables": 2,
+        "rhyme": "DESSENT"
+    },
+    "aquiel": {
+        "syllables": 3,
+        "rhyme": "BEHL"
+    },
+    "positronic": {
+        "syllables": 4,
+        "rhyme": "BLAHNIK"
+    },
+    "nacelle": {
+        "syllables": 2,
+        "rhyme": "BEHL"
+    },
+    "metaphasic": {
+        "syllables": 4,
+        "rhyme": "HESIK"
+    },
+    "empathic": {
+        "syllables": 4,
+        "rhyme": "MAGIC"
+    },
+    "replicator": {
+        "syllables": 4,
+        "rhyme": "ATER"
+    },
+    "disruptor": {
+        "syllables": 3,
+        "rhyme": "BAUR"
+    },
+    "crewmember": {
+        "syllables": 3,
+        "rhyme": "EMBER"
+    },
+    "spectral": {
+        "syllables": 2,
+        "rhyme": "ALL"
+    },
+    "happened": {
+        "syllables": 2,
+        "rhyme": "BLEND"
+    },
+    "enough": {
+        "syllables": 2,
+        "rhyme": "BLUFF"
+    },
+    "tau": {
+        "syllables": 1,
+        "rhyme": "AU"
+    },
+    "lwaxana": {
+        "lwaxana": 3,
+        "rhyme": "LAMINA"
+    },
+    "okona": {
+        "lwaxana": 3,
+        "rhyme": ""
+    },
+    "sheliak": {
+        "lwaxana": 3,
+        "rhyme": ""
+    },
+    "betazed": {
+        "lwaxana": 2,
+        "rhyme": ""
+    },
+    "jono": {
+        "lwaxana": 2,
+        "rhyme": ""
+    },
+    "odan": {
+        "lwaxana": 2,
+        "rhyme": ""
     }
 }

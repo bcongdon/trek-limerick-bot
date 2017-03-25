@@ -11,6 +11,7 @@ const rhyme = require('rhyme');
 const Tokenizer = require('sentence-tokenizer');
 const Twit = require('twit');
 const customWords = require('./custom_phrases.json');
+const text2png = require('text2png');
 require('dotenv').config();
 var _ = require('lodash');
 _.mixin(botUtilities.lodashMixins);
@@ -248,8 +249,32 @@ program
   .description('Generate a limerick')
   .action(function() {
     getData(function(data) {
-      var limerick = generateLimerick(data)
-      console.log(limerick.map(function(d){return d.line}).join('\n'));
+      while(true) {
+        var limerick = generateLimerick(data);
+        var l_str = limerick.map(function(d){return d.line}).join('\n');
+        if(l_str.length <= 140){
+          console.log(l_str);
+          console.log(l_str.length);
+          break;
+        }
+      }
+    });
+  });
+
+program
+  .command('image')
+  .description('Generate a limerick')
+  .action(function() {
+    getData(function(data) {
+      var limerick = generateLimerick(data);
+      var l_str = limerick.map(function(d){return d.line}).join('\n');
+      console.log(l_str);
+      fs.writeFileSync('out.png', text2png(l_str, {
+        font: '80px Helvetica Neue',
+        textColor: 'black',
+        bgColor: 'white',
+        lineSpacing: 25,
+        padding: 20}));
     });
   });
 
