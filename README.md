@@ -71,5 +71,5 @@ that proud core of him that would not yield...
     npm run package
     ```
 
-2. Upload `./build/trek-limerick-bot.zip` to Lambda
+2. Upload `./dist/trek-limerick-bot.zip` to Lambda
 3. Setup a CloudWatch Schedule with a `rate(1 hour)` activation schedule.

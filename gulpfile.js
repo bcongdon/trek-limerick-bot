@@ -5,6 +5,8 @@ const gulp   = require('gulp');
 const zip    = require('gulp-zip');
 const path   = require('path');
 var del = require('del');
+var install = require('gulp-install');
+
 const aws_lambda_node_canvas = require('aws-lambda-node-canvas');
 
 let runtime = 'nodejs' // nodejs or nodejs4.3
@@ -12,12 +14,12 @@ let runtime = 'nodejs' // nodejs or nodejs4.3
 gulp.task('package', () => {
     return gulp.src('build/**/*') //Your src files to bundle into aws lambda
         .pipe(aws_lambda_node_canvas({runtime : runtime})) //Adds all the required files needed to run node-canvas in aws lambda
-        .pipe(zip('archive.zip'))
+        .pipe(zip('trek-limerick-bot.zip'))
         .pipe(gulp.dest('dist')); //Also place the uploaded file
 });
 
 gulp.task('build', () => {
-    return gulp.src(['trek-limerick-bot.js', 'custom_phrases.json', '!node_modules/**/*','!dist/**/*','!node_modules/aws-lambda-node-canvas/**/*']) //Your src files to bundle into aws lambda
+    return gulp.src(['trek-limerick-bot.js', 'custom_phrases.json', '!dist/**/*','!node_modules/aws-lambda-node-canvas/**/*']) //Your src files to bundle into aws lambda
         .pipe(aws_lambda_node_canvas({runtime : runtime})) //Adds all the required files needed to run node-canvas in aws lambda
         .pipe(gulp.dest('build')); //Also place the uploaded file
 });
@@ -27,10 +29,16 @@ gulp.task('copy', () => {
         .pipe(gulp.dest('build/processed'));
 });
 
+gulp.task('npm', function() {
+  return gulp.src('./package.json')
+    .pipe(gulp.dest('./build/'))
+    .pipe(install({production: true}));
+});
+
 gulp.task('clean', (cb) => {
     del.sync('build/');
     del.sync('dist/');
     cb();
 });
 
-gulp.task('default', gulp.series('clean', 'copy', 'build', 'package'));
+gulp.task('default', gulp.series('clean', 'copy', 'npm', 'build', 'package'));
