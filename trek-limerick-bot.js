@@ -12,7 +12,7 @@ const Tokenizer = require('sentence-tokenizer');
 const Twit = require('twit');
 const customWords = require('./custom_phrases.json');
 const text2png = require('text2png');
-require('dotenv').config();
+require('dotenv').config({path: __dirname + '/.env'});
 var _ = require('lodash');
 _.mixin(botUtilities.lodashMixins);
 _.mixin(Twit.prototype, botUtilities.twitMixins);
@@ -129,7 +129,7 @@ function categorizeLimerickLines(lines) {
 }
 
 function processScriptFile(fpath, cb) {
-  mkdirp('processed/', function(err) {
+  mkdirp(__dirname + '/processed/', function(err) {
     if(err) throw err;
     var data = fs.readFile(fpath, function(err, data) {
       if(err) throw err;
@@ -227,7 +227,7 @@ function splitIntoTweets(lines) {
 }
 
 function getData(cb) {
-  glob("processed/*.json", function(er, files) {
+  glob(__dirname + "/processed/*.json", function(er, files) {
     var data = {};
     files.forEach(function(fpath){
       try {
