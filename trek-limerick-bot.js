@@ -12,8 +12,9 @@ const Tokenizer = require('sentence-tokenizer');
 const Twit = require('twit');
 const customWords = require('./custom_phrases.json');
 const text2png = require('text2png');
-require('dotenv').config({path: __dirname + '/.env'});
 var _ = require('lodash');
+
+require('dotenv').config({path: __dirname + '/.env'});
 _.mixin(botUtilities.lodashMixins);
 _.mixin(Twit.prototype, botUtilities.twitMixins);
 
@@ -150,18 +151,6 @@ function processScriptFile(fpath, cb) {
   })
 }
 
-program
-  .command('process')
-  .description('Processes scripts in "scripts/"')
-  .action(function() {
-    glob("scripts/*.json", function(er, files) {
-      async.forEachOfLimit(files, 3, function(fname, key, cb) {
-        console.log("Processing: " + fname);
-        processScriptFile(fname, cb);
-      });
-    });
-  });
-
 function keyCount(d) {
   var sum = 0;
   for(var key in d.nines){
@@ -244,20 +233,6 @@ function getData(cb) {
   });
 }
 
-program
-  .command('generate')
-  .description('Generate a limerick')
-  .option('-o, --out <file>', 'Output limerick to image')
-  .action(function(opts) {
-    getData(function(data) {
-      var limerick = generateLimerick(data);
-      var l_str = limerick.map(function(d){return d.line}).join('\n');
-      console.log(l_str);
-      if(opts.out)
-        fs.writeFileSync(opts.out, textToImage(l_str));
-    });
-  });
-
 function textToImage(str) {
   return text2png(str, {
     font: '80px Helvetica Neue',
@@ -301,21 +276,6 @@ function postLimerick(cb) {
         });
       });
     }
-    // Old code for posting tweets in sequence
-    // var tweets = splitIntoTweets(limerick);
-    // async.reduce(tweets, {}, function(prev, str, cb) {
-    //   var opts = {
-    //     in_reply_to_status_id: prev.id_str,
-    //     status: str
-    //   }
-    //   T.post('statuses/update', opts, function(err, data, resp) {
-    //     cb(err, data);
-    //   });
-    // }, function(err) {
-    //   if(err) throw err;
-    //   else console.log("Posted tweets successfully.");
-    //   if(cb) cb();
-    // });
   });
 }
 
@@ -341,6 +301,32 @@ program
   .action(function(word) {
     rhyme(function(r) {
       console.log("Syllables: " + syllablesForWord(r, word));
+    });
+  });
+
+program
+  .command('generate')
+  .description('Generate a limerick')
+  .option('-o, --out <file>', 'Output limerick to image')
+  .action(function(opts) {
+    getData(function(data) {
+      var limerick = generateLimerick(data);
+      var l_str = limerick.map(function(d){return d.line}).join('\n');
+      console.log(l_str);
+      if(opts.out)
+        fs.writeFileSync(opts.out, textToImage(l_str));
+    });
+  });
+
+program
+  .command('process')
+  .description('Processes scripts in "scripts/"')
+  .action(function() {
+    glob("scripts/*.json", function(er, files) {
+      async.forEachOfLimit(files, 3, function(fname, key, cb) {
+        console.log("Processing: " + fname);
+        processScriptFile(fname, cb);
+      });
     });
   });
 
