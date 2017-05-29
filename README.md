@@ -1,4 +1,6 @@
 # tng-limerick-bot
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/bcongdon/trek-limerick-bot.svg)](https://greenkeeper.io/)
 > 🖖 Limericks from Star Trek Scripts
 
 See it in action: https://twitter.com/TrekLimerickBot
