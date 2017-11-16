@@ -247,7 +247,7 @@ function postLimerick(cb) {
     var limerick = generateLimerick(data);
     var l_str = limerick.map(function(d){return d.line}).join('\n');
     var T = new Twit(botUtilities.getTwitterAuthFromEnv());
-    if(l_str.length < 140) {
+    if(l_str.length < 280) {
       T.post('statuses/update', { status: l_str }, function(err, data, resp) {
         console.log("Posted successfully.");
         if(cb) cb();

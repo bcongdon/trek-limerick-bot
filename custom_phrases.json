@@ -392,27 +392,27 @@
         "rhyme": "AU"
     },
     "lwaxana": {
-        "lwaxana": 3,
+        "syllables": 3,
         "rhyme": "LAMINA"
     },
     "okona": {
-        "lwaxana": 3,
+        "syllables": 3,
         "rhyme": ""
     },
     "sheliak": {
-        "lwaxana": 3,
+        "syllables": 3,
         "rhyme": ""
     },
     "betazed": {
-        "lwaxana": 2,
+        "syllables": 2,
         "rhyme": ""
     },
     "jono": {
-        "lwaxana": 2,
+        "syllables": 2,
         "rhyme": ""
     },
     "odan": {
-        "lwaxana": 2,
+        "syllables": 2,
         "rhyme": ""
     }
 }
