@@ -14,6 +14,8 @@ const customWords = require('./custom_phrases.json');
 const text2png = require('text2png');
 var _ = require('lodash');
 
+const TWEET_LENGTH = 280
+
 require('dotenv').config({path: __dirname + '/.env'});
 _.mixin(botUtilities.lodashMixins);
 _.mixin(Twit.prototype, botUtilities.twitMixins);
@@ -247,7 +249,7 @@ function postLimerick(cb) {
     var limerick = generateLimerick(data);
     var l_str = limerick.map(function(d){return d.line}).join('\n');
     var T = new Twit(botUtilities.getTwitterAuthFromEnv());
-    if(l_str.length < 280) {
+    if(l_str.length < TWEET_LENGTH) {
       T.post('statuses/update', { status: l_str }, function(err, data, resp) {
         console.log("Posted successfully.");
         if(cb) cb();
